@@ -8,7 +8,6 @@ dotenv.config();
 const app = express();
 const port = parseInt(process.env.PORT || "3001", 10);
 
-// app.use(cors());
 app.use(
   cors({
     origin: [
