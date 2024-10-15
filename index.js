@@ -2,7 +2,6 @@ import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import emailRouter from "./routes/sendEmail.js";
-import downloadCvRouter from "./routes/downloadCv.js";
 
 dotenv.config();
 
