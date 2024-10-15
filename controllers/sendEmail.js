@@ -4,6 +4,7 @@ import { ValidationError } from "yup";
 import {emailHtml } from "../helpers/functions.js";
 export const sendEmail = async (req, res) => {
   
+  console.log(req.body)
   try {
     const validatedBody = await emailSchema.validate(req.body, {
       abortEarly: false,
@@ -35,6 +36,7 @@ export const sendEmail = async (req, res) => {
     };
 
     await transporter.sendMail(mailOptions);
+    console.log(mailOptions);
     res.status(200).send("Email sent successfully");
   } catch (error) {
     if (error instanceof ValidationError) {
