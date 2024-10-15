@@ -15,6 +15,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", [emailRouter, downloadCvRouter]);
 
+app.get("/api/hello", (req, res) => {
+  res.send('Hello')
+})
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
