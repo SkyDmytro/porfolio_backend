@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 import { ValidationError } from "yup";
 import {emailHtml } from "../helpers/functions.js";
 export const sendEmail = async (req, res) => {
-  
+ 
   console.log(req.body)
   try {
     const validatedBody = await emailSchema.validate(req.body, {
@@ -37,10 +37,10 @@ export const sendEmail = async (req, res) => {
 
     await transporter.sendMail(mailOptions);
     console.log(mailOptions);
-    res.status(200).send("Email sent successfully");
+    res.status(200).send(JSON.stringify({"message":"Email sent successfully"}));
   } catch (error) {
     if (error instanceof ValidationError) {
-      console.error("ValidationError:", error.errors);
+      console.error("ValidationError:", error);
       res.status(400).send(error.errors);
     } else {
       console.error("Error sending email:", error);
@@ -48,3 +48,4 @@ export const sendEmail = async (req, res) => {
     }
   }
 }
+
